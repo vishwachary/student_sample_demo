@@ -1,6 +1,5 @@
 package com.student.demo.samples.controller;
 
-import java.rmi.StubNotFoundException;
 import java.util.List;
 
 import javax.validation.Valid;
