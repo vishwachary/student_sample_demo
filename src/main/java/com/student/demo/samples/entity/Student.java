@@ -25,22 +25,18 @@ public class Student {
 	@Column(name="branch")
 	private String branch;
 	
-	
+	//this explians hibernate jpa - student table has a forigen key refrence to Address table.
+	//address_id in Student table - FK- to- home_address_id in Address table.
+	//for this example we  assumed student has 0ne-to-0ne relation ship with the Address.
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="home_address_id")
-    private Address address;
-	
+        @JoinColumn(name="home_address_id")
+        private Address address;
+   	
 	public Student() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 		
-//	public Student(String name, String branch,Address address) {
-//		this.studentName = name;
-//        this.branch = branch;
-//        this.address = address;
-//        this.address.setSudent(this);
-//    }
 
 	public long getStudentId() {
 		return studentId;
