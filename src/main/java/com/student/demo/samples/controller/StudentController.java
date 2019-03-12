@@ -35,17 +35,14 @@ public class StudentController {
 	}
 
 	@GetMapping("/students/{student_id}")
-
 	public Student getStudentById(@PathVariable long student_id) {
-
 		if (student_service.getStudentById(student_id) == null) {
 			throw new StudentNotFoundException("student id with :" + student_id + "not found");
 		}
 		return student_service.getStudentById(student_id);
-
 	}
 
-	// ------------update a restaurant - using PutMapping-----------------------
+	// ------------update a student - using PutMapping-----------------------
 	@PutMapping("/students")
 	public ResponseEntity<Student> updateRestaurant(@Valid @RequestBody Student studentDetails)
 			throws ResourceNotFoundException {
@@ -57,20 +54,17 @@ public class StudentController {
 		student.setAddress(studentDetails.getAddress());
 		student.setStudentName(studentDetails.getStudentName());
 		student.setBranch(studentDetails.getBranch());
-
 		final Student updatedstudent = student_service.updateStudentDetails(studentDetails);
 		return ResponseEntity.ok(updatedstudent);
 	}
 	//------------add a new student - using POSTMapping-----------------------
 	
-		@PostMapping("/students")
-		
-		public Student AddRestaurant(@Valid @RequestBody Student newrestaurant) {
-			
+	@PostMapping("/students")		
+	public Student AddRestaurant(@Valid @RequestBody Student newrestaurant) {
 				
-			return this.student_service.AddStudent(newrestaurant);
-			
-		}
+		return this.student_service.AddStudent(newrestaurant);			
+	}
+	
 	@DeleteMapping("/students/{student_id}")
 	public void deleteStudent(@PathVariable long student_id) {
 		student_service.deleteById(student_id);
